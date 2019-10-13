@@ -1,48 +1,31 @@
 function watchForm() {
-    /*
-    $('#dogForm').on('submit', function (event) {
+    $('#videoForm').on('submit', function (event) {
         event.preventDefault();
 
-        let APIurl = 'https://dog.ceo/api/breeds/image/random';
-        let settings = {
-            method: "GET"
-        };
+        $('#youtubeVideo').empty();
 
-        fetch(APIurl, settings)
-            .then(function (response) {
-                if (response.ok) {
-                    return response.json();
-                }
-
-                throw new Error("Something went wrong " + response.statusText);
-            })
-            .then(function (responseJSON) {
-                $('#dogImages').append(`<li class="dogItem">
-                                    <img src="${responseJSON.message}" />
-                                  </li>`);
-            })
-            .catch(function (err) {
-                $('#dogImages').html(`<li>
-                                  Something went wrong. Try again later
-                                </li>`);
-            });
-    });
-*/
-    $('#dogForm').on('submit', function (event) {
-        event.preventDefault();
-
-        let dogBreed = $("#breed").val()
-        let numberOfImages = $("#numImages").val()
-        let APIurl ="https://dog.ceo/api/breed/" + dogBreed + "/images/random/" + numberOfImages;
+        let search = $("#video").val()
+        let APIkey = "AIzaSyBYjk7OZSZUpWkariquSuMuA__XtiemCsQ";
+        let APIurl ="https://www.googleapis.com/youtube/v3/search";
 
         $.ajax({
             url: APIurl,
             method: "GET",
+            data: {
+                'key': APIkey,
+                'part': 'id, snippet',
+                'q': search,
+                'maxResults': '10',
+                'relevanceLanguage': 'en',
+                'type': 'video'
+            },
             dataType: "json",
             success: function (responseJSON) {
-                for (let i = 0; i < responseJSON.message.length; i++) {
-                    $('#dogImages').append(`<li class="dogItem"><img src="${responseJSON.message[i]}" /></li>`);
+                console.log(responseJSON);
+                for (let i = 0; i < responseJSON.items.length; i++) {
+                    $('#youtubeVideo').append(`<div class="ytVideo"><a target="_blank" href="https://www.youtube.com/watch?v=${responseJSON.items[i].id.videoId}"><li>${responseJSON.items[i].snippet.title}"</li><img src="${responseJSON.items[i].snippet.thumbnails.medium.url}"></a></div>`)
                 }
+                $('#youtubeResults').append(`<input type="submit" value="Get more results"/>`);
             },
             error: function (err) { 
 
@@ -51,11 +34,15 @@ function watchForm() {
     });
 
     // Event delegation
-    $('#dogImages').on('click', '.dogItem', function (event) {
+    /*
+    $('#youtubeVideo').on('click', '.ytVideo', function (event) {
         event.preventDefault();
-
-        console.log("Clicked the <li> ");
+        let youtubeURL = "https://www.youtube.com/watch?v=" + $(this).val();
+        console.log($(this));
+        console.log(youtubeURL);
+        //window.open(youtubeURL, '_blank');
     })
+    */
 }
 
 watchForm();

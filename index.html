@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        Dog app
+        Youtube app
     </title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
@@ -11,22 +11,18 @@
 
 <body>
 
-    <form id="dogForm">
-        <label for="dogBreed">
-            Dog Breed
+    <form id="videoForm">
+        <label for="video">
+            Search for a video
         </label>
-        <input type="text" id="breed">
-        <label for="imgNumber">
-            How many images do you want to retrieve? 
+        <input type="text" id="video">
+        <label for="searchVideo">
+            Click to get the videos
         </label>
-        <input type="number" id="numImages">
-        <label for="searchDog">
-            Click to get the images
-        </label>
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search"/>
     </form>
-    <section class="results">
-        <ul id="dogImages">
+    <section class="results" id="youtubeResults">
+        <ul id="youtubeVideo">
         </ul>
     </section>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
