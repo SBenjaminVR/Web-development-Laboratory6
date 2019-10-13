@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        Dog app
+    </title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+</head>
+
+<body>
+
+    <form id="dogForm">
+        <label for="dogBreed">
+            Dog Breed
+        </label>
+        <input type="text" id="breed">
+        <label for="imgNumber">
+            How many images do you want to retrieve? 
+        </label>
+        <input type="number" id="numImages">
+        <label for="searchDog">
+            Click to get the images
+        </label>
+        <input type="submit" value="Search" />
+    </form>
+    <section class="results">
+        <ul id="dogImages">
+        </ul>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="./js/index.js" type="text/javascript"></script>
+</body>
+
+</html>
