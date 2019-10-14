@@ -6,3 +6,15 @@ img{
   width: 250px;
 }
 
+#youtubeVideo {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+.ytVideo {
+  border: 1px dotted rgb(6, 33, 99);
+  margin: 4px;
+  padding: 4px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+}
